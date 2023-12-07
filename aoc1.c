@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     char *line = NULL;
     size_t len = 0;
     ssize_t nread;
-    unsigned long result = 0lu;
+    unsigned long result = 0ul;
 
     stream = fopen("input.txt", "r");
     if (stream == NULL)
@@ -39,11 +39,7 @@ int main(int argc, char *argv[])
     }
 
     while ((nread = getline(&line, &len, stream)) != -1)
-    {
-        uint8_t c = compute(line);
-        if (c > 0)
-            result += c;
-    }
+        result += compute(line);
 
     free(line);
     fclose(stream);
